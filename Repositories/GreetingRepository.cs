@@ -2,10 +2,10 @@ namespace GreetingApp.Repositories
 {
     public class GreetingRepository : IGreetingRepository
     {
-        public string GetTestGreeting(string httpMethod)
+        public string GetGreeting()
         {
-            // Return a simple message based on the HTTP method
-            return $"{httpMethod}: Greeting response from Repository";
+            // Return a simple greeting message for UC2
+            return "Hello World";
         }
     }
 }

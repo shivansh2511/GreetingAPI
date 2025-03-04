@@ -17,6 +17,7 @@
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/GreetingApp.csproj.CoreCompileInputs.cache
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/GreetingApp.MvcApplicationPartsAssemblyInfo.cs
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/GreetingApp.MvcApplicationPartsAssemblyInfo.cache
+/Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/GreetingApp.sourcelink.json
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/staticwebassets.build.json
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/staticwebassets.development.json
 /Users/shivansh/Shivansh/ASP Dotnet/GreetingAPI/GreetingApp/obj/Debug/net8.0/staticwebassets/msbuild.GreetingApp.Microsoft.AspNetCore.StaticWebAssets.props

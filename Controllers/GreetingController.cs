@@ -14,35 +14,35 @@ namespace GreetingApp.Controllers
             _greetingService = greetingService;
         }
         
-        // GET: api/greeting/test
-        [HttpGet("test")]
-        public IActionResult GetTest()
+        // GET: api/greeting
+        [HttpGet]
+        public IActionResult GetGreeting()
         {
-            var message = _greetingService.GetTestGreeting("GET");
+            var message = _greetingService.GetGreeting();
             return Ok(new { Message = message });
         }
         
-        // POST: api/greeting/test
-        [HttpPost("test")]
-        public IActionResult PostTest()
+        // POST: api/greeting
+        [HttpPost]
+        public IActionResult PostGreeting()
         {
-            var message = _greetingService.GetTestGreeting("POST");
+            var message = _greetingService.GetGreeting();
             return Ok(new { Message = message });
         }
         
-        // PUT: api/greeting/test
-        [HttpPut("test")]
-        public IActionResult PutTest()
+        // PUT: api/greeting
+        [HttpPut]
+        public IActionResult PutGreeting()
         {
-            var message = _greetingService.GetTestGreeting("PUT");
+            var message = _greetingService.GetGreeting();
             return Ok(new { Message = message });
         }
         
-        // DELETE: api/greeting/test
-        [HttpDelete("test")]
-        public IActionResult DeleteTest()
+        // DELETE: api/greeting
+        [HttpDelete]
+        public IActionResult DeleteGreeting()
         {
-            var message = _greetingService.GetTestGreeting("DELETE");
+            var message = _greetingService.GetGreeting();
             return Ok(new { Message = message });
         }
     }

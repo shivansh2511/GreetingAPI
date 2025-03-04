@@ -5,15 +5,15 @@ namespace GreetingApp.Services
     public class GreetingService : IGreetingService
     {
         private readonly IGreetingRepository _greetingRepository;
-
+        
         public GreetingService(IGreetingRepository greetingRepository)
         {
             _greetingRepository = greetingRepository;
         }
-
-        public string GetTestGreeting(string httpMethod)
+        
+        public string GetGreeting()
         {
-            return _greetingRepository.GetTestGreeting(httpMethod);
+            return _greetingRepository.GetGreeting();
         }
     }
 }
