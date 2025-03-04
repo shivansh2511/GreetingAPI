@@ -1,3 +1,4 @@
+using GreetingApp.Models;
 using GreetingApp.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,35 +15,39 @@ namespace GreetingApp.Controllers
             _greetingService = greetingService;
         }
         
-        // GET: api/greeting
-        [HttpGet]
-        public IActionResult GetGreeting()
+        // GET: api/greeting/personalized?firstName=John&lastName=Doe
+        [HttpGet("personalized")]
+        public IActionResult GetPersonalizedGreeting([FromQuery] string? firstName, [FromQuery] string? lastName)
         {
-            var message = _greetingService.GetGreeting();
+            var request = new GreetingRequest { FirstName = firstName, LastName = lastName };
+            var message = _greetingService.GetPersonalizedGreeting(request);
             return Ok(new { Message = message });
         }
         
-        // POST: api/greeting
-        [HttpPost]
-        public IActionResult PostGreeting()
+        // POST: api/greeting/personalized
+        // Expected JSON body: { "FirstName": "John", "LastName": "Doe" }
+        [HttpPost("personalized")]
+        public IActionResult PostPersonalizedGreeting([FromBody] GreetingRequest request)
         {
-            var message = _greetingService.GetGreeting();
+            var message = _greetingService.GetPersonalizedGreeting(request);
             return Ok(new { Message = message });
         }
         
-        // PUT: api/greeting
-        [HttpPut]
-        public IActionResult PutGreeting()
+        // PUT: api/greeting/personalized
+        // Expected JSON body: { "FirstName": "John", "LastName": "Doe" }
+        [HttpPut("personalized")]
+        public IActionResult PutPersonalizedGreeting([FromBody] GreetingRequest request)
         {
-            var message = _greetingService.GetGreeting();
+            var message = _greetingService.GetPersonalizedGreeting(request);
             return Ok(new { Message = message });
         }
         
-        // DELETE: api/greeting
-        [HttpDelete]
-        public IActionResult DeleteGreeting()
+        // DELETE: api/greeting/personalized?firstName=John&lastName=Doe
+        [HttpDelete("personalized")]
+        public IActionResult DeletePersonalizedGreeting([FromQuery] string? firstName, [FromQuery] string? lastName)
         {
-            var message = _greetingService.GetGreeting();
+            var request = new GreetingRequest { FirstName = firstName, LastName = lastName };
+            var message = _greetingService.GetPersonalizedGreeting(request);
             return Ok(new { Message = message });
         }
     }
