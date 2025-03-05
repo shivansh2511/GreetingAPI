@@ -1,6 +1,7 @@
 using GreetingApp.Models;
 using GreetingApp.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace GreetingApp.Controllers
 {
@@ -9,46 +10,48 @@ namespace GreetingApp.Controllers
     public class GreetingController : ControllerBase
     {
         private readonly IGreetingService _greetingService;
-        
+
         public GreetingController(IGreetingService greetingService)
         {
             _greetingService = greetingService;
         }
-        
-        // GET: api/greeting/personalized?firstName=John&lastName=Doe
-        [HttpGet("personalized")]
-        public IActionResult GetPersonalizedGreeting([FromQuery] string? firstName, [FromQuery] string? lastName)
+
+        // GET: api/greeting
+        // Retrieves all saved greetings.
+        [HttpGet]
+        public async Task<IActionResult> GetGreetings()
         {
-            var request = new GreetingRequest { FirstName = firstName, LastName = lastName };
-            var message = _greetingService.GetPersonalizedGreeting(request);
-            return Ok(new { Message = message });
+            var greetings = await _greetingService.GetGreetingsAsync();
+            return Ok(greetings);
         }
-        
-        // POST: api/greeting/personalized
-        // Expected JSON body: { "FirstName": "John", "LastName": "Doe" }
-        [HttpPost("personalized")]
-        public IActionResult PostPersonalizedGreeting([FromBody] GreetingRequest request)
+
+        // POST: api/greeting
+        // Saves a new greeting.
+        // Expected JSON body: { "message": "Hello from Postman!" }
+        [HttpPost]
+        public async Task<IActionResult> SaveGreeting([FromBody] GreetingDto dto)
         {
-            var message = _greetingService.GetPersonalizedGreeting(request);
-            return Ok(new { Message = message });
+            await _greetingService.SaveGreetingAsync(dto.Message);
+            return Ok(new { Message = "Greeting saved successfully." });
         }
-        
-        // PUT: api/greeting/personalized
-        // Expected JSON body: { "FirstName": "John", "LastName": "Doe" }
-        [HttpPut("personalized")]
-        public IActionResult PutPersonalizedGreeting([FromBody] GreetingRequest request)
+
+        // PUT: api/greeting/{id}
+        // Updates an existing greeting.
+        // Expected JSON body: { "message": "Updated greeting from Postman!" }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateGreeting(int id, [FromBody] GreetingDto dto)
         {
-            var message = _greetingService.GetPersonalizedGreeting(request);
-            return Ok(new { Message = message });
+            await _greetingService.UpdateGreetingAsync(id, dto.Message);
+            return Ok(new { Message = "Greeting updated successfully." });
         }
-        
-        // DELETE: api/greeting/personalized?firstName=John&lastName=Doe
-        [HttpDelete("personalized")]
-        public IActionResult DeletePersonalizedGreeting([FromQuery] string? firstName, [FromQuery] string? lastName)
+
+        // DELETE: api/greeting/{id}
+        // Deletes the greeting with the specified ID.
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteGreeting(int id)
         {
-            var request = new GreetingRequest { FirstName = firstName, LastName = lastName };
-            var message = _greetingService.GetPersonalizedGreeting(request);
-            return Ok(new { Message = message });
+            await _greetingService.DeleteGreetingAsync(id);
+            return Ok(new { Message = "Greeting deleted successfully." });
         }
     }
 }
