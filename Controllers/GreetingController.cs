@@ -17,7 +17,7 @@ namespace GreetingApp.Controllers
         }
 
         // GET: api/greeting
-        // UC6: List all greeting messages
+        // Lists all greetings.
         [HttpGet]
         public async Task<IActionResult> GetGreetings()
         {
@@ -26,6 +26,7 @@ namespace GreetingApp.Controllers
         }
 
         // GET: api/greeting/{id}
+        // Retrieves a greeting by its id.
         [HttpGet("{id}")]
         public async Task<IActionResult> GetGreetingById(int id)
         {
@@ -38,6 +39,8 @@ namespace GreetingApp.Controllers
         }
 
         // POST: api/greeting
+        // Creates a new greeting.
+        // Expected JSON: { "message": "Hello from Postman!" }
         [HttpPost]
         public async Task<IActionResult> SaveGreeting([FromBody] GreetingDto dto)
         {
@@ -46,14 +49,24 @@ namespace GreetingApp.Controllers
         }
 
         // PUT: api/greeting/{id}
+        // Edits an existing greeting.
+        // Expected JSON: { "message": "Updated greeting message" }
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGreeting(int id, [FromBody] GreetingDto dto)
         {
+            // Optionally, you can verify if the greeting exists before updating
+            var existingGreeting = await _greetingService.GetGreetingByIdAsync(id);
+            if (existingGreeting == null)
+            {
+                return NotFound(new { Message = $"Greeting with id {id} not found." });
+            }
+            
             await _greetingService.UpdateGreetingAsync(id, dto.Message);
             return Ok(new { Message = "Greeting updated successfully." });
         }
 
         // DELETE: api/greeting/{id}
+        // Deletes the greeting with the specified id.
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGreeting(int id)
         {

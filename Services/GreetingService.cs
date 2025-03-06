@@ -14,7 +14,6 @@ namespace GreetingApp.Services
             _greetingRepository = greetingRepository;
         }
 
-        // UC6: Returns all greeting messages
         public async Task<IEnumerable<Greeting>> GetGreetingsAsync()
         {
             return await _greetingRepository.GetAllGreetingsAsync();

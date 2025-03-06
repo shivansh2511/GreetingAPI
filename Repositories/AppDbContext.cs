@@ -10,6 +10,7 @@ namespace GreetingApp.Repositories
         {
         }
 
-        public DbSet<Greeting> Greetings { get; set; } // Represents the Greetings table.
+        // This DbSet maps to the "Greetings" table in the MySQL database.
+        public DbSet<Greeting> Greetings { get; set; }
     }
 }

@@ -2,6 +2,6 @@ namespace GreetingApp.Models
 {
     public class GreetingDto
     {
-        public required string Message { get; set; }
+        public string Message { get; set; }
     }
 }

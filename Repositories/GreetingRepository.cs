@@ -14,7 +14,6 @@ namespace GreetingApp.Repositories
             _context = context;
         }
 
-        // UC6: List all greeting messages
         public async Task<IEnumerable<Greeting>> GetAllGreetingsAsync()
         {
             return await _context.Greetings.ToListAsync();
@@ -31,13 +30,15 @@ namespace GreetingApp.Repositories
             await _context.SaveChangesAsync();
         }
 
+        // Update (edit) a greeting message
         public async Task UpdateGreetingAsync(int id, string message)
         {
+            // Find the greeting by its primary key
             var greeting = await _context.Greetings.FindAsync(id);
             if (greeting != null)
             {
-                greeting.Message = message;
-                await _context.SaveChangesAsync();
+                greeting.Message = message;  // Update the message
+                await _context.SaveChangesAsync();  // Save changes to the database
             }
         }
 
