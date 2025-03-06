@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Read connection string from configuration
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-// Register the DbContext using the Pomelo MySQL provider. 
+// Register the DbContext using the Pomelo MySQL provider... 
 // ServerVersion.AutoDetect analyzes the server version automatically.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
