@@ -14,12 +14,12 @@ namespace GreetingApp.Repositories
             _context = context;
         }
 
+        // UC6: List all greeting messages
         public async Task<IEnumerable<Greeting>> GetAllGreetingsAsync()
         {
             return await _context.Greetings.ToListAsync();
         }
 
-        // New method implementation for UC5
         public async Task<Greeting> GetGreetingByIdAsync(int id)
         {
             return await _context.Greetings.FindAsync(id);

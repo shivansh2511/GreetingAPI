@@ -17,6 +17,7 @@ namespace GreetingApp.Controllers
         }
 
         // GET: api/greeting
+        // UC6: List all greeting messages
         [HttpGet]
         public async Task<IActionResult> GetGreetings()
         {
@@ -24,8 +25,7 @@ namespace GreetingApp.Controllers
             return Ok(greetings);
         }
 
-        // New Endpoint: GET: api/greeting/{id}
-        // Retrieves a greeting message by its Id.
+        // GET: api/greeting/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetGreetingById(int id)
         {

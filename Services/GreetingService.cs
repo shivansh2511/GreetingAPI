@@ -14,12 +14,12 @@ namespace GreetingApp.Services
             _greetingRepository = greetingRepository;
         }
 
+        // UC6: Returns all greeting messages
         public async Task<IEnumerable<Greeting>> GetGreetingsAsync()
         {
             return await _greetingRepository.GetAllGreetingsAsync();
         }
 
-        // New service method for UC5
         public async Task<Greeting> GetGreetingByIdAsync(int id)
         {
             return await _greetingRepository.GetGreetingByIdAsync(id);
