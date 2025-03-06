@@ -19,6 +19,12 @@ namespace GreetingApp.Repositories
             return await _context.Greetings.ToListAsync();
         }
 
+        // New method implementation for UC5
+        public async Task<Greeting> GetGreetingByIdAsync(int id)
+        {
+            return await _context.Greetings.FindAsync(id);
+        }
+
         public async Task AddGreetingAsync(Greeting greeting)
         {
             await _context.Greetings.AddAsync(greeting);

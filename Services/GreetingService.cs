@@ -19,6 +19,12 @@ namespace GreetingApp.Services
             return await _greetingRepository.GetAllGreetingsAsync();
         }
 
+        // New service method for UC5
+        public async Task<Greeting> GetGreetingByIdAsync(int id)
+        {
+            return await _greetingRepository.GetGreetingByIdAsync(id);
+        }
+
         public async Task SaveGreetingAsync(string message)
         {
             var greeting = new Greeting { Message = message };
